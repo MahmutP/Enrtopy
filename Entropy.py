@@ -278,7 +278,7 @@ class Entropy:
             elif choice == "4":
                 self.ui_batch_process()
             elif choice == "5":
-                konsol.print("\n[bold red]Shutting down AegisPass...[/bold red]")
+                konsol.print("\n[bold red]Shutting down Entropy...[/bold red]")
                 time.sleep(0.5)
                 break
 
