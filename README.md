@@ -39,8 +39,8 @@ Projeyi çalıştırmak için bilgisayarınızda Python 3 yüklü olmalıdır.
 
 1.  Repoyu klonlayın veya dosyaları indirin:
     ```bash
-    git clone [https://github.com/kullaniciadi/entropy.git](https://github.com/kullaniciadi/entropy.git)
-    cd entropy
+    git clone https://github.com/MahmutP/Enrtopy.git
+    cd Entropy
     ```
 
 2.  Gerekli kütüphaneyi yükleyin (Sadece `rich` gereklidir):
