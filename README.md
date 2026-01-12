@@ -1,10 +1,11 @@
 # 🛡️ ENTROPY
 
-**Entropy**, modern terminal arayüzleri için tasarlanmış, Python tabanlı gelişmiş bir şifre üretim ve analiz aracıdır.
+**Entropy**, modern terminal arayüzleri için tasarlanmış, çok dilli (Python & C) gelişmiş bir şifre üretim ve analiz aracıdır.
 
-`rich` kütüphanesi ile güçlendirilmiş **Entropy**, sıkıcı komut satırı deneyimini; görsel, etkileşimli ve siber güvenlik temalı bir panele (dashboard) dönüştürür.
+Orijinal olarak Python ve `rich` kütüphanesi ile geliştirilen **Entropy**, şimdi **C Port** versiyonuyla herhangi bir bağımlılık olmadan (standalone), yüksek performansla çalışabilen taşınabilir bir mimariye kavuşmuştur.
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![C](https://img.shields.io/badge/Language-C-00599C)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue)
 ![Style](https://img.shields.io/badge/Style-Rich%20CLI-fuchsia)
 
@@ -14,7 +15,7 @@ Entropy, sıradan şifre oluşturuculardan farklı olarak 4 ana modül sunar:
 
 ### 1. Complex Generator (Karmaşık Üretici)
 * Büyük/küçük harf, rakam ve özel karakter içeren yüksek entropili şifreler üretir.
-* Okunması zor olan (l, 1, O, 0 gibi) karakterleri otomatik olarak eler.
+* Okunması zor olan (l, 1, O, 0 gibi) karakterleri filtreler.
 * Özelleştirilebilir uzunluk ve sembol seçenekleri sunar.
 
 ### 2. Memorable Passphrase (Akılda Kalıcı Parola)
@@ -28,29 +29,68 @@ Entropy, sıradan şifre oluşturuculardan farklı olarak 4 ana modül sunar:
 * Görsel ilerleme çubuğu (progress bar) ile güvenlik seviyesini gösterir.
 
 ### 4. Batch Factory (Toplu İşlem Kasası)
-* Saniye içerisinde onlarca şifre üretir ve bunları eş zamanlı olarak analiz eder.
+* Saniyeler içerisinde onlarca şifre üretir ve bunları eş zamanlı olarak analiz eder.
+* **C Versiyonunda:** Ultra hızlı üretim kapasitesi sunar.
 * Belirlenen güvenlik puanının altındaki şifreleri otomatik olarak eler.
-* Güvenli bulunan şifreleri `vault.txt` dosyasına dışa aktarır.
-* İşlem sırasında "Matrix" tarzı canlı bir veri akışı sunar.
+* Güvenli bulunan şifreleri `vault.txt` (veya `vault_c.txt`) dosyasına dışa aktarır.
 
-## 🛠️ Kurulum
+---
 
-Projeyi çalıştırmak için bilgisayarınızda Python 3 yüklü olmalıdır.
+## 🛠️ Kurulum ve Derleme
 
-1.  Repoyu klonlayın veya dosyaları indirin:
+Entropy'yi iki farklı şekilde kullanabilirsiniz: Görsel açıdan zengin **Python** sürümü veya yüksek performanslı **C** sürümü.
+
+### Seçenek A: Python Sürümü (Görsel Arayüz)
+Görsel olarak en zengin deneyim için önerilir.
+
+1.  Repoyu klonlayın:
     ```bash
-    git clone https://github.com/MahmutP/Enrtopy.git
+    git clone [https://github.com/MahmutP/Enrtopy.git](https://github.com/MahmutP/Enrtopy.git)
     cd Entropy
     ```
 
-2.  Gerekli kütüphaneyi yükleyin (Sadece `rich` gereklidir):
+2.  Gerekli kütüphaneyi yükleyin:
     ```bash
     pip install rich
     ```
 
-## 💻 Kullanım
+3.  Çalıştırın:
+    ```bash
+    python main.py
+    ```
 
-Uygulamayı başlatmak için terminalde aşağıdaki komutu çalıştırın:
+### Seçenek B: C Port Sürümü (Yüksek Performans)
+Herhangi bir kütüphane kurulumu gerektirmez. Derleyin ve çalıştırın.
 
-```bash
-python main.py
+1.  **GCC ile Derleme (Linux/Mac/Windows MinGW):**
+    ```bash
+    gcc entropy.c -o entropy
+    ```
+
+2.  **Çalıştırma:**
+    * **Linux/Mac:**
+        ```bash
+        ./entropy
+        ```
+    * **Windows:**
+        ```cmd
+        entropy.exe
+        ```
+
+## 🆚 Sürüm Karşılaştırması
+
+| Özellik | Python Sürümü (`main.py`) | C Port Sürümü (`entropy.c`) |
+| :--- | :--- | :--- |
+| **Görsellik** | Çok Yüksek (Rich UI) | Yüksek (ANSI Colors) |
+| **Bağımlılık** | Python 3 + `rich` | Yok (Standalone) |
+| **Hız** | Hızlı | Çok Hızlı (Native) |
+| **Dosya Boyutu** | Yorumlayıcı Gerektirir | Küçük Binary Dosyası |
+| **Platform** | Tüm OS (Python yüklü) | Tüm OS (Derlenmiş) |
+
+---
+
+## 🤝 Katkıda Bulunma
+Pull requestler kabul edilir. Büyük değişiklikler için lütfen önce neyi değiştirmek istediğinizi tartışmak amacıyla bir konu (issue) açınız.
+
+## 📄 Lisans
+[Apache 2.0](https://choosealicense.com/licenses/apache-2.0/)
