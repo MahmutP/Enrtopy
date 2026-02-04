@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "entropy-pass"
+version = "3.0.0"
+description = "Advanced, secure password generation and analysis suite."
+authors = ["MahmutP"]
+readme = "README.md"
+packages = [{include = "entropy", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+rich = "^13.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

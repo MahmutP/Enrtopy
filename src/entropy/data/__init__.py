@@ -1,0 +1,3 @@
+from .wordlists import ALL_WORDS, ENGLISH_WORDS, TURKISH_WORDS
+
+__all__ = ["ALL_WORDS", "ENGLISH_WORDS", "TURKISH_WORDS"]
